@@ -1,0 +1,1 @@
+require File.dirname(File.expand_path(__FILE__)) + '/lib/semester_translator'
