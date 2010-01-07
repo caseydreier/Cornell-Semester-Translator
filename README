@@ -53,4 +53,12 @@ You can also just pass a string:
 
 You can see more examples in the test file.
 
-2010 cjd, released under the MIT license
+=Installation
+
+To use this as a Rails plugin:
+
+  script/plugin install git://github.com/daphonz/Cornell-Semester-Translator.git
+  
+You don't need rails for this to work, you can also just copy the two files in the /lib/ directory and require them as needed into your Ruby scripts.
+
+2010 cjd via Cornell University, released under the BSD license
