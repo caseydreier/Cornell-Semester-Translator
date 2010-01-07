@@ -1,0 +1,64 @@
+=SemesterTranslator
+
+This is a simple library that allows you to easily translate different (often legacy) semester naming 
+conventions used at Cornell University.  The inputs can be either a hash of individual, named items, or a 
+string in the format of {semester name}-{year}.
+
+The class allows you to see the semester and year represented in the following ways:
+
+* semester: The standard name of a semester, Spring, Summer, or Fall
+* semester_code: Cornell's legacy numeric code values, 20, 65, 70, etc.
+* year: The four-digit year
+* term: The compound term, used in PeopleSoft, S09, U09, F09, etc.
+
+The input when initializing can take any number of the above as keys in a hash.
+
+=Example
+
+You can pass information to the class in a variety of ways:
+
+	st = Cornell::SemesterTranslator.new(:term => 'U09')
+	st.semester
+		# => "Summer"
+	st.year
+		# => 2009
+	st.semester_code
+		# => 65
+
+  st = Cornell::SemesterTranslator.new(:semester_code => 70, :year => '2009')
+	st.semester
+		# => "Fall"
+	st.term
+		# => "F09"
+
+If you just pass a semester code, the term and year will not be available:
+
+	st = Cornell::SemesterTranslator.new(:semester_code => 70)
+	st.semester
+		# => "Fall"
+	st.term
+		# => nil
+
+You can also just pass a string:
+
+	st = Cornell::SemesterTranslator.new('Spring 1996')
+	st.semester
+		# => "Spring"
+	st.year
+		# => 1996
+	st.semester_code
+		# => 20  
+	st.term
+		# => "S96"  
+
+You can see more examples in the test file.
+
+=Installation
+
+To use this as a Rails plugin:
+
+  script/plugin install git://github.com/daphonz/Cornell-Semester-Translator.git
+  
+You don't need rails for this to work, you can also just copy the two files in the /lib/ directory and require them as needed into your Ruby scripts.
+
+2010 cjd via Cornell University, released under the BSD license
